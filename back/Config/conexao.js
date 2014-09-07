@@ -5,7 +5,7 @@
 // Usando o mongoose odm(Object data model) para ter acesso ao mongodb através do NodeJs
 var mongoose = require('mongoose');
 // Criando a base de dados para conexão padrão mongodb://servidor/nomebase
-mongoose.connect('mongodb://localhos/churras');
+mongoose.connect('mongodb://localhost/churras');
 
 var db = mongoose.connection;// atribuindo a current connection
 
@@ -36,3 +36,6 @@ process.on('SIGINT', function() {
     console.log('Sua aplicação foi encerrada e desconectada');
     process.exit(0);
   });
+});
+//TODO 
+ require('../modules/carnes/model');
