@@ -25,6 +25,15 @@ router.get('/', function (req, res){
 // Cadastrar nova carne
 router.post('/', function (req, res) {
 	_carne.cadastrar(req, res, cb);
-})
+});
+
+// Cadastrar nova carne
+router.delete('/:id', function (req, res) {
+	_carne.deletar(req, res, cb);
+});
+
+router.put('/:id', function (req, res) {
+	_carne.alterar(req, res, cb);
+});
 
 module.exports = router;
