@@ -1,8 +1,8 @@
 (function(angular){
 
 // Controllers
-angular.module('myApp.controllers',
+angular.module('churras.controllers',
   [
-    'myApp.modules.Carnes.controllers'
+    'churras.modules.Carnes.controllers'
   ]);
 })(angular);

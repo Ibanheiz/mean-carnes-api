@@ -1,8 +1,8 @@
 (function(angular){
 
 /* Services */
-angular.module('myApp.services',
+angular.module('churras.services',
   [
-    'myApp.modules.Carnes.services'
+    'churras.modules.Carnes.services'
   ]);
 })(angular);

@@ -1,5 +1,15 @@
 extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
+block body
+  section(data-ng-controller='AppController')
+    h1= title
+    p Welcome to #{title}
+
+    section(data-ng-view)
+
+  script(src='js/lib/angular/angular.min.js');
+  script(src='js/modules/app.js');
+  script(src='js/modules/modules/carnes/services.js');
+  script(src='js/modules/modules/carnes/controllers.js');
+  script(src='js/modules/modules/services.js');
+  script(src='js/modules/modules/controllers.js');
