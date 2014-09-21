@@ -1,0 +1,14 @@
+section
+  article
+    h3.title Carnes Disponiveis
+    p.message {{ message }}
+
+    table
+      thead
+        tr
+          th
+      tbody
+        tr(data-ng-repeat='carne in carnes')
+          td
+            {{carne.name}}
+  article
