@@ -9,6 +9,8 @@ section
           th
       tbody
         tr(data-ng-repeat='carne in carnes')
-          td
-            {{carne.name}}
-  article
+          td {{ carne._id }}
+          td {{ carne.tipo }}
+          td {{ carne.categoria }}
+          td {{ carne.peso }}
+          td {{ carne.preco }}

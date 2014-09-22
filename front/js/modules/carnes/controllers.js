@@ -6,23 +6,22 @@ var _carnes = {
 
   cbFindSuccess: function (data, $scope) {
       $scope.carnes = data.data;
-      $scope.message = 'List complete';
-      console.log(data);
+      $scope.message = 'Lista de Carnes';
   },
   cbFindError: function (error, $scope) {
       $scope.status = 'Unable to load carnes: ' + error.message;
   }
 };
-// Controllers 
+// Controllers
 angular.module('churras.modules.Carnes.controllers', []).
-  controller('AppController', 
+  controller('AppController',
     ['$scope', '$http',
     function ($scope, $http) {
-
-    $http({
-      method: 'GET',
-      url: '/api/name'
-    }).
+      $scope.title = 'Primeira API do Churras';
+      $http({
+        method: 'GET',
+        url: '/api/name'
+      }).
     success(function (data, status, headers, config) {
       $scope.name = data.name;
     }).
@@ -31,18 +30,17 @@ angular.module('churras.modules.Carnes.controllers', []).
     });
 
   }]).
-  controller('CarnesListarController', 
-    ['$scope', '$http', 'CarneService', 
+  controller('CarnesListarController',
+    ['$scope', '$http', 'CarneService',
     function ($scope, $http, CarneService) {
 
-      var Carnes = CarneService;
-      Carne.find().then(function(data){
+      var Carne = CarneService;
+
+      Carne.listar().then(function(data){
         _carnes.cbFindSuccess(data, $scope);
       }, function(err){
         _carnes.cbFindError(err, $scope);
       });
 
   }]);
-})
-
-(angular);
+})(angular);

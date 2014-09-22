@@ -16,7 +16,7 @@ db.on('error',function(err){
 });
 
 db.on('open',function(){
-	console.log('Conecão aberta');
+	console.log('Conexão aberta');
 });
 
 db.on('connected',function(){
@@ -37,5 +37,5 @@ process.on('SIGINT', function() {
     process.exit(0);
   });
 });
-//TODO 
+//TODO
  require('../modules/carnes/model');

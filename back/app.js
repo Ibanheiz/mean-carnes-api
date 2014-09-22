@@ -9,60 +9,28 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./modules/main/routes');
-var users = require('./routes/users');
+var expose = require('./modules/expose/index');
 
 var app = express();
 
 var api = {};
 api.carnes = require('./modules/carnes/api/routes');
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, '/modules'));
 app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/api/carnes',api.carnes);
+app.use(express.static(path.join(__dirname, '../front')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/expose', expose);
+app.use('/api/carnes',api.carnes);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+// redirect all others to the index (HTML5 history)
+app.get('*', function(req, res, next) {
+  res.render('main/views/index');
 });
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
 
 module.exports = app;

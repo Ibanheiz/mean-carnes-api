@@ -11,7 +11,6 @@
 				this.listar = function() {
 					return $http.get(urlBase);
 				};
-
 			}
 		]);
 })(angular);
